@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restricted Access</title>
+</head>
+<body>
+    <?php
+    // Start the session
+    session_start();
+
+    // Check if the user is authenticated
+    if (!isset($_SESSION['discord_user'])) {
+        // Redirect to Discord login if not authenticated
+        header("Location: discord_login.php");
+        exit();
+    }
+
+    // Check if the authenticated user has the required Discord ID
+    $allowedUserIDs = ['845334676650590238', '1176441943992053774'];
+    $authenticatedUserID = $_SESSION['discord_user']['id'];
+
+    if (!in_array($authenticatedUserID, $allowedUserIDs)) {
+        // Redirect if the user is not authorized
+        header("Location: unauthorized.php");
+        exit();
+    }
+
+    echo '<h1>Welcome to the Restricted Access Page</h1>';
+    echo '<textarea id="messageInput" placeholder="Type your message"></textarea>';
+    echo '<button onclick="sendMessage()">Send Message</button>';
+    echo '<a href="discord_logout.php">Logout</a>';
+    ?>
+
+    <script src="main.js"></script>
+</body>
+</html>
