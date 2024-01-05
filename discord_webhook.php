@@ -3,7 +3,7 @@
 session_start();
 
 // Replace 'YOUR_DISCORD_WEBHOOK_URL' with your actual Discord webhook URL
-$discordWebhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
+$discordWebhookUrl = 'https://discord.com/api/webhooks/1192912033679679628/yPddXsv6oAO4BfI-aev_A8GVwx03H3xXU9csTMnfF2FZZElu428p5kkRvAd83Jw15oEH';
 
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
